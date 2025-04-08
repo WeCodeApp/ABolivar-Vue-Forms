@@ -5,6 +5,7 @@
 
     <label for="password">Password:</label>
     <input type="password" id="password" v-model="password" required />
+    <span v-if="passwordError" class="error">{{ passwordError }}</span>
 
     <label for="role">Role:</label>
     <select id="role" v-model="role">
@@ -62,6 +63,7 @@ export default {
       terms: false,
       tempSkill: "",
       skills: [],
+      passwordError: "", // Add this line
     };
   },
   methods: {
@@ -81,13 +83,20 @@ export default {
       this.skills.splice(index, 1);
     },
     handleSubmit() {
-      console.log("Form submitted!", {
-        email: this.email,
-        password: this.password,
-        role: this.role,
-        terms: this.terms,
-        skills: this.skills,
-      });
+      this.passwordError =
+        this.password.length >= 8 
+          ? ""
+          : "Password must be at least 8 characters long.";
+
+      if (!this.passwordError) {
+        console.log("Form submitted!", {
+          email: this.email,
+          password: this.password,
+          role: this.role,
+          terms: this.terms,
+          skills: this.skills,
+        });
+      }
     },
   },
 };

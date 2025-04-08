@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="handleSubmit" class="theme-pink">
+  <form @submit.prevent="handleSubmit" class="theme-pink" style="width: 500px">
     <label for="email">Email:</label>
     <input type="text" id="email" v-model="email" required />
 
@@ -84,7 +84,7 @@ export default {
     },
     handleSubmit() {
       this.passwordError =
-        this.password.length >= 8 
+        this.password.length >= 8
           ? ""
           : "Password must be at least 8 characters long.";
 
@@ -111,11 +111,9 @@ body {
 }
 
 form {
-  max-width: 420px;
-  margin: 50px auto;
   background-color: #fff;
   padding: 40px;
-  border-radius: 12px;
+  border-radius: 18px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
